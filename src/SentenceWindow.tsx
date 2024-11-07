@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-export default function SentenceWindow({ fullSentence,time }: { fullSentence: string, time:number }) {
+export default function SentenceWindow({ fullSentence, time }: { fullSentence: string, time: number }) {
 
   const han = /^[\p{sc=Han}]+$/u;
 
@@ -21,9 +21,9 @@ export default function SentenceWindow({ fullSentence,time }: { fullSentence: st
   const kanjiDisplayTime: number = 3000 //msec
   const intervalTime: number = 2000 //msec
   const fullDisplayTime: number = 15000 //msec
-  
+
   let nowSentence = ""
-  
+
   if (time < kanjiDisplayTime + intervalTime) {
     const letters: number = (time / kanjiDisplayTime) * kanjiSentense.length
     nowSentence = (kanjiSentense.slice(0, letters))
@@ -43,7 +43,7 @@ export default function SentenceWindow({ fullSentence,time }: { fullSentence: st
         }
         letters++
       }
-      nowSentence =(fullSentence.slice(0, letters) + getKanjiSentence(fullSentence.slice(letters)))
+      nowSentence = (fullSentence.slice(0, letters) + getKanjiSentence(fullSentence.slice(letters)))
     }
   }
 

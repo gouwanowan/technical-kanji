@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // BootstrapのCSSをインポート
+import Button from 'react-bootstrap/Button'; // React BootstrapのButtonコンポーネントをインポート
 import SentenceWindow from './SentenceWindow';
 
 export default function App() {
@@ -7,23 +9,28 @@ export default function App() {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
-    useEffect(() => {
-        if (isRunning) {
-          const id = setInterval(() => {
-            setTime(time + 10);
-          }, 10);
-          return () => clearInterval(id);
-        }
-      }, [isRunning, time]);
+  useEffect(() => {
+    if (isRunning) {
+      const id = setInterval(() => {
+        setTime(time + 10);
+      }, 10);
+      return () => clearInterval(id);
+    }
+  }, [isRunning, time]);
 
   return (
     <div className="App">
       <div className='App-header'>
         <SentenceWindow fullSentence={fullSentence} time={time}/>
         {time / 1000}<br />
-        <button onClick={() => { setIsRunning(!isRunning) }}>
-          Button
-        </button>
+        <div>
+          <Button variant='primary' size='lg' onClick={() => { setIsRunning(!isRunning) }}>
+            {isRunning ? "Pause" : "Play"}
+          </Button>
+          <Button variant='secondary'size='lg' onClick={() => {setIsRunning(false);setTime(0)}}>
+            Reset
+          </Button>
+        </div>
       </div>
     </div>
   );
