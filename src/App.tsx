@@ -24,10 +24,10 @@ export default function App() {
         <SentenceWindow fullSentence={fullSentence} time={time}/>
         {time / 1000}<br />
         <div>
-          <Button variant='primary' size='lg' onClick={() => { setIsRunning(!isRunning) }}>
+          <Button variant='primary' className='my-button' size='lg' onClick={() => { setIsRunning(!isRunning) }}>
             {isRunning ? "Pause" : "Play"}
           </Button>
-          <Button variant='secondary'size='lg' onClick={() => {setIsRunning(false);setTime(0)}}>
+          <Button variant='secondary' className='my-button' size='lg' onClick={() => {setIsRunning(false);setTime(0)}}>
             Reset
           </Button>
         </div>
